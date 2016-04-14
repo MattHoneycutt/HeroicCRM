@@ -1,0 +1,22 @@
+﻿@using HeroicCRM.Web.Helpers
+@using HeroicCRM.Web.Models
+@model dynamic
+
+@{
+	ViewBag.Title = "Reports";
+}
+
+<h1 class="page-header">
+	Reports
+</h1>
+
+@(Html.Angular().GridFor<ReportController>(c => c.NewCustomers())
+	.Title("New Customers")
+	.Columns<NewCustomerReportViewModel>(config =>
+	{
+		config.Add(x => x.Name);
+		config.Add(x => x.WorkEmail);
+		config.Add(x => x.CreateDate, "Date Joined", "date: 'MM/dd/yyyy'");
+	}))
+
+<lost-customers-report ></lost-customers-report>
